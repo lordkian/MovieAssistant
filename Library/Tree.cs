@@ -19,22 +19,15 @@ namespace com.MovieAssistant.core
     public class Branche : Node
     {
         private Node[] next;
-
         public Node[] Next
         {
             get { return next; }
         }
-        public Branche() : this(0) { }
         public Branche(int nextLength)
         {
             next = new Node[nextLength];
         }
         public string URL { get; set; }
-        public void Append(Node node)
-        {
-            Array.Resize(ref next, next.Length + 1);
-            next[next.Length - 1] = node;
-        }
     }
     public class Leaf : Node
     {
