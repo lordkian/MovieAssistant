@@ -16,9 +16,9 @@ namespace com.MovieAssistant.core
         {
             throw new NotImplementedException();
         }
-        public static void Download(ModleTree modleTree, string name)
+        public static Tree Download(ModleTree modleTree, string name)
         {
-
+            throw new NotImplementedException();
         }
     }
 }
