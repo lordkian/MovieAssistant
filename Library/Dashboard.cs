@@ -5,6 +5,7 @@ using System.Text;
 namespace com.MovieAssistant.core
 {
     public enum SaveType { XML, JSON, Binary }
+    public delegate string StringMod(string str);
     public static class Dashboard
     {
 

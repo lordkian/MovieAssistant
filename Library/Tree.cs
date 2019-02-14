@@ -14,24 +14,24 @@ namespace com.MovieAssistant.core
             root = new Branche(firstNodeLength);
             this.modle = modle;
         }
+
     }
     public abstract class Node { }
     public class Branche : Node
     {
-        private Node[] next;
-        public Node[] Next
-        {
-            get { return next; }
-        }
+        public readonly int NextLength;
+        private readonly List<Node[]> next;
+        public string URL { get; set; }
         public Branche(int nextLength)
         {
-            next = new Node[nextLength];
+            NextLength = nextLength;
         }
-        public string URL { get; set; }
     }
     public class Leaf : Node
     {
         public string Content { get; set; }
+        public string Name { get; set; }
         public LeafType Type { get; set; }
+        public bool IsUnique { get; set; }
     }
 }
