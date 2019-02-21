@@ -1,4 +1,5 @@
-﻿using System;
+﻿using com.MovieAssistant.core.DataStructure;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
