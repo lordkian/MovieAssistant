@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using com.MovieAssistant.core;
+using com.MovieAssistant.core.DataStructure;
 
 namespace test1
 {

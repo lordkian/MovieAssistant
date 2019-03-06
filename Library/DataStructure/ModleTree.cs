@@ -12,8 +12,7 @@ namespace com.MovieAssistant.core.DataStructure
         public string SiteNmae { get; set; }
         public string BaseURL { get; set; }
         public string RootXpath { get { return root.Xpath; } }
-        //just for development
-        public ModleTree() : this(0) { }
+        public readonly Map<ModleNode, string> modleNodeToXpath = new Map<ModleNode, string>();
         public ModleTree(int firstNodeLength)
         {
             root = new BrancheModle(firstNodeLength);
@@ -29,6 +28,7 @@ namespace com.MovieAssistant.core.DataStructure
         }
         private void Add(string fatherXpath, ModleNode node)
         {
+            modleNodeToXpath.Add(node, node.Xpath);
             var list1 = new List<BrancheModle>();
             var list2 = new List<BrancheModle>();
             list1.Add(root as BrancheModle);
@@ -52,15 +52,33 @@ namespace com.MovieAssistant.core.DataStructure
             } while (list2.Count > 0);
             throw new XpathNotFoundException();
         }
+        private Tree GetTree()
+        {
+            var tree = new Tree((root as BrancheModle).Next.Length, this, root as BrancheModle, modleNodeToXpath);
+
+            var list1 = new List<ModleNode>();
+            var list2 = new List<ModleNode>();
+            list1.Add(root);
+            tree.modleToNode.Add(root, new List<Node>());
+            do
+            {
+                list2.Clear();
+                foreach (var item in list1)
+                    if (item is BrancheModle)
+                        list2.AddRange((item as BrancheModle).Next);
+                foreach (var item in list2)
+                    tree.modleToNode.Add(item, new List<Node>());
+                list1.Clear();
+                list1.AddRange(list2);
+            } while (list2.Count > 0);
+
+            return tree;
+        }
     }
     public abstract class ModleNode
     {
-        private string xpath;
-        public string Xpath
-        {
-            get { return xpath; }
-            set { xpath = value; }
-        }
+        public Guid ID { get; set; }
+        public string Xpath { get; set; }
     }
     public class BrancheModle : ModleNode
     {
@@ -96,9 +114,14 @@ namespace com.MovieAssistant.core.DataStructure
     }
     public class LeafModle : ModleNode
     {
+        public Guid ID { get; set; }
         public string Name { get; set; }
         public LeafType Type { get; set; }
         public bool IsUnique { get; set; }
+        public LeafModle()
+        {
+            ID = new Guid();
+        }
     }
     public enum LeafType { downloadable, data }
     public class XpathNotFoundException : Exception { }
