@@ -52,7 +52,7 @@ namespace com.MovieAssistant.core.DataStructure
             } while (list2.Count > 0);
             throw new XpathNotFoundException();
         }
-        private Tree GetTree()
+        public Tree GetTree()
         {
             var tree = new Tree((root as BrancheModle).Next.Length, this, root as BrancheModle, modleNodeToXpath);
 
@@ -72,6 +72,12 @@ namespace com.MovieAssistant.core.DataStructure
                 list1.AddRange(list2);
             } while (list2.Count > 0);
 
+            return tree;
+        }
+        public Tree GetTree(string searchValue)
+        {
+            var tree = GetTree();
+            tree.SetURL(SearchEng(searchValue));
             return tree;
         }
     }

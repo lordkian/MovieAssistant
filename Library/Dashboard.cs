@@ -20,6 +20,19 @@ namespace com.MovieAssistant.core
         }
         public static Tree Download(ModleTree modleTree, string name)
         {
+            var tree = modleTree.GetTree(name);
+
+            do
+            {
+                foreach (var item in tree)
+                    item.AddData(LoadData(item.URL, item.Xpaths));
+
+            } while (!tree.IsFinished());
+
+            return tree;
+        }
+        private static List<List<string>> LoadData(string URL, List<string> xpaths)
+        {
             throw new NotImplementedException();
         }
     }
