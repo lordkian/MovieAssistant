@@ -69,6 +69,21 @@ namespace com.MovieAssistant.core.DataStructure
             //    first.AddData(item);
             //}
         }
+        public bool IsFinished()
+        {
+            if (tmp.Count == 0)
+                tmp.AddRange(GetBottom());
+            if ((from i in tmp where i.next.Count > 0 select i).Count() > 0)
+            {
+                tmp.Clear();
+                tmp.AddRange(GetBottom());
+            }
+            var modleList = (from i in tmp select i.brancheModle).Distinct().ToList();
+            var modleNodes = new List<ModleNode>();
+            foreach (BrancheModle item in modleList)
+                modleNodes.AddRange(item.Next);
+            return ((from i in modleNodes where i is BrancheModle select i).Count() == 0);
+        }
         #endregion
         #region Foreach
         public IEnumerator<Package> GetEnumerator()
@@ -80,7 +95,6 @@ namespace com.MovieAssistant.core.DataStructure
                 yield return new Package(item);
             }
         }
-
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
