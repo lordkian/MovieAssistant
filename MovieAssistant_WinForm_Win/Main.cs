@@ -54,7 +54,7 @@ namespace MovieAssistant_WinForm_Win
 
             dataGrab = new DataGrab(model, textBox1.Text);
             dataGrab.SetFilter(f1Guid, f2Guid);
-            dataGrab.onFilter = OnFilter;
+            dataGrab.onFilter = Filter;
             dataGrab.onFinish = Finish;
             dataGrab.Start();
 
@@ -71,7 +71,7 @@ namespace MovieAssistant_WinForm_Win
             button1.Click -= button1_Click2;
             dataGrab.Continue();
         }
-        private void OnFilter(Guid id, string xpath, string[] data)
+        private void Filter(Guid id, string xpath, string[] data)
         {
             guid = id;
             if (button1.Text != "continue")

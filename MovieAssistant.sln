@@ -3,12 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Library", "Library\Library.csproj", "{CA6D95E8-0D5E-4B0B-A294-9AE9DF1A73A3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test1", "test1\test1.csproj", "{E2F7CDD4-C933-4CA9-9B33-A15FC093B718}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{DF694EAB-8A1A-42BB-9218-5A3EA3E6BA25}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAssistant_WinForm_Win", "MovieAssistant_WinForm_Win\MovieAssistant_WinForm_Win.csproj", "{0930E3CB-BB9F-4136-A078-D4D77CDE459F}"
 EndProject
 Global
@@ -17,18 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CA6D95E8-0D5E-4B0B-A294-9AE9DF1A73A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA6D95E8-0D5E-4B0B-A294-9AE9DF1A73A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA6D95E8-0D5E-4B0B-A294-9AE9DF1A73A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA6D95E8-0D5E-4B0B-A294-9AE9DF1A73A3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E2F7CDD4-C933-4CA9-9B33-A15FC093B718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2F7CDD4-C933-4CA9-9B33-A15FC093B718}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2F7CDD4-C933-4CA9-9B33-A15FC093B718}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2F7CDD4-C933-4CA9-9B33-A15FC093B718}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF694EAB-8A1A-42BB-9218-5A3EA3E6BA25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF694EAB-8A1A-42BB-9218-5A3EA3E6BA25}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF694EAB-8A1A-42BB-9218-5A3EA3E6BA25}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF694EAB-8A1A-42BB-9218-5A3EA3E6BA25}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0930E3CB-BB9F-4136-A078-D4D77CDE459F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0930E3CB-BB9F-4136-A078-D4D77CDE459F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0930E3CB-BB9F-4136-A078-D4D77CDE459F}.Release|Any CPU.ActiveCfg = Release|Any CPU
