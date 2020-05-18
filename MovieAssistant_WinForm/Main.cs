@@ -1,17 +1,12 @@
-﻿using Library.DataStructure.DataGrab;
-using Library.DataStructure.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using XpathDataCrawler.DataGrab;
+using XpathDataCrawler.DataStructure.Model;
 
-namespace MovieAssistant_WinForm_Win
+namespace MovieAssistant_WinForm
 {
     public partial class Main : Form
     {
@@ -22,14 +17,15 @@ namespace MovieAssistant_WinForm_Win
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            var folderBrowserDialog = new FolderBrowserDialog() { SelectedPath = textBox2.Text };
-            folderBrowserDialog.ShowDialog();
-            textBox2.Text = folderBrowserDialog.SelectedPath;
+            var folderBrowserDialog = new FolderBrowserDialog() { SelectedPath = textBox1.Text };
+            var res = folderBrowserDialog.ShowDialog();
+            if (res != DialogResult.Cancel)
+                textBox1.Text = folderBrowserDialog.SelectedPath;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             Model model = new Model()
             {
@@ -52,15 +48,15 @@ namespace MovieAssistant_WinForm_Win
 
             model.AddItem(guid2, "//div [@class='download']/a/@href", "subtitle.zip", LeafType.Downloadable, true);
 
-            dataGrab = new DataGrab(model, textBox1.Text);
+            dataGrab = new DataGrab(model, textBox2.Text);
             dataGrab.SetFilter(f1Guid, f2Guid);
             dataGrab.onFilter = Filter;
             dataGrab.onFinish = Finish;
             dataGrab.Start();
 
-            button1.Click -= button1_Click;
+            button2.Click -= button2_Click;
         }
-        private void button1_Click2(object sender, EventArgs e)
+        private void button2_Click2(object sender, EventArgs e)
         {
             var data = new List<string>();
             foreach (var item in checkedListBox1.SelectedItems)
@@ -68,24 +64,23 @@ namespace MovieAssistant_WinForm_Win
                 data.Add(item.ToString());
             }
             dataGrab.Filter(guid, true, data.ToArray());
-            button1.Click -= button1_Click2;
+            button2.Click -= button2_Click2;
             dataGrab.Continue();
         }
         private void Filter(Guid id, string xpath, string[] data)
         {
             guid = id;
-            if (button1.Text != "continue")
-                button1.Text = "continue";
-            button1.Click += button1_Click2;
+            if (button2.Text != "continue")
+                button2.Text = "continue";
+            button2.Click += button2_Click2;
             checkedListBox1.Items.Clear();
             checkedListBox1.Items.AddRange(data.Distinct().ToArray());
         }
         private void Finish(DataGrab dataGrab)
         {
-            if (!Directory.Exists(textBox2.Text))
-                Directory.CreateDirectory(textBox2.Text);
-            dataGrab.Download(textBox2.Text);
+            if (!Directory.Exists(textBox1.Text))
+                Directory.CreateDirectory(textBox1.Text);
+            dataGrab.Download(textBox1.Text);
         }
-
     }
 }

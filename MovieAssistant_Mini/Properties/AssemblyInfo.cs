@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MovieAssistant_WinForm_Win")]
+[assembly: AssemblyTitle("MovieAssistant_Mini")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MovieAssistant_WinForm_Win")]
+[assembly: AssemblyProduct("MovieAssistant_Mini")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("0930e3cb-bb9f-4136-a078-d4d77cde459f")]
+[assembly: Guid("1e697600-48a7-44e3-94ef-2916c3b22071")]
 
 // Version information for an assembly consists of the following four values:
 //

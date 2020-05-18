@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MovieAssistant_WinForm_Win.Properties
+namespace MovieAssistant_Mini.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace MovieAssistant_WinForm_Win.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MovieAssistant_WinForm_Win.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MovieAssistant_Mini.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

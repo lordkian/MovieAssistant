@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MovieAssistant_WinForm_Win
+namespace MovieAssistant_Mini
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace MovieAssistant_WinForm_Win
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new Form1());
         }
     }
 }

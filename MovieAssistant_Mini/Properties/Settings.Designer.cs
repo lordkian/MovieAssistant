@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MovieAssistant_WinForm_Win.Properties
+namespace MovieAssistant_Mini.Properties
 {
 
 

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29411.108
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAssistant_WinForm_Win", "MovieAssistant_WinForm_Win\MovieAssistant_WinForm_Win.csproj", "{0930E3CB-BB9F-4136-A078-D4D77CDE459F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieAssistant_WinForm", "MovieAssistant_WinForm\MovieAssistant_WinForm.csproj", "{EA87DFDE-234A-4744-8AE9-2F8B8F61B10E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieAssistant_Mini", "MovieAssistant_Mini\MovieAssistant_Mini.csproj", "{1E697600-48A7-44E3-94EF-2916C3B22071}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0930E3CB-BB9F-4136-A078-D4D77CDE459F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0930E3CB-BB9F-4136-A078-D4D77CDE459F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0930E3CB-BB9F-4136-A078-D4D77CDE459F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0930E3CB-BB9F-4136-A078-D4D77CDE459F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA87DFDE-234A-4744-8AE9-2F8B8F61B10E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA87DFDE-234A-4744-8AE9-2F8B8F61B10E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA87DFDE-234A-4744-8AE9-2F8B8F61B10E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA87DFDE-234A-4744-8AE9-2F8B8F61B10E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E697600-48A7-44E3-94EF-2916C3B22071}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E697600-48A7-44E3-94EF-2916C3B22071}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E697600-48A7-44E3-94EF-2916C3B22071}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E697600-48A7-44E3-94EF-2916C3B22071}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
