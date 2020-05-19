@@ -18,6 +18,8 @@ namespace MovieAssistant_Mini
     public delegate void voider(List<StringTuple> tuples);
     public partial class Form1 : Form
     {
+        List<StringTuple> stringTuples = new List<StringTuple>();
+        DownloadManager downloadManager = new DownloadManager();
         public Form1()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace MovieAssistant_Mini
         private void Unblock(List<StringTuple> tuples)
         {
             if (InvokeRequired)
-                Invoke(new voider(Unblock),tuples);
+                Invoke(new voider(Unblock), tuples);
             else
             {
                 textBox1.Enabled = true;
@@ -49,7 +51,11 @@ namespace MovieAssistant_Mini
                 button1.Enabled = true;
                 button2.Enabled = true;
                 checkedListBox1.Enabled = true;
-                checkedListBox1.Items.AddRange(tuples.ToArray());
+                if (tuples.Count > 0)
+                {
+                    var strs = from t in tuples select t.name;
+                    checkedListBox1.Items.AddRange(strs.Distinct().ToArray());
+                }
             }
         }
         private void button2_Click(object sender, EventArgs e)
@@ -60,11 +66,72 @@ namespace MovieAssistant_Mini
             Task.Run(() =>
             {
                 var res = Search(textBox2.Text);
+                stringTuples.Clear();
+                stringTuples.AddRange(res);
                 Unblock(res);
             });
         }
         private void button2_Click2(object sender, EventArgs e)
-        { }
+        {
+            button2.Click -= button2_Click2;
+            button2.Click += button2_Click3;
+            var ch = new List<string>();
+            foreach (object item in checkedListBox1.CheckedItems)
+                if (item is string)
+                    ch.Add(item as string);
+            Block();
+            Task.Run(() =>
+            {
+                var urls = (from t in stringTuples where ch.Contains(t.name) select t.url).Distinct().ToList();
+                var res = getSubLinks(urls);
+                stringTuples.Clear();
+                stringTuples.AddRange(res);
+                Unblock(res);
+            });
+        }
+        private void button2_Click3(object sender, EventArgs e)
+        {
+            button2.Click -= button2_Click3;
+            button2.Click += button2_Click;
+            var ch = new List<string>();
+            foreach (object item in checkedListBox1.CheckedItems)
+                if (item is string)
+                    ch.Add(item as string);
+            Block();
+            Task.Run(() =>
+            {
+                var urls = (from t in stringTuples where ch.Contains(t.name) select t.url).Distinct().ToList();
+                DownloadSubs(urls);
+                stringTuples.Clear();
+                Unblock(new List<StringTuple>());
+            });
+        }
+        public void DownloadSubs(List<string> URLs)
+        {
+            var client = new WebClient();
+            client.Encoding = Encoding.UTF8;
+            foreach (var item in URLs)
+            {
+                var html = client.DownloadString(item);
+                var res = LoadDataFromHTML(html, "//div [@class='download']/a/@href");
+                downloadManager.AddDownloadItem(textBox1.Text, "https://subscene.com" + res[0][0]);
+            }
+            downloadManager.Start();
+        }
+        public List<StringTuple> getSubLinks(List<string> URLs)
+        {
+            var client = new WebClient();
+            client.Encoding = Encoding.UTF8;
+            var ret = new List<StringTuple>();
+            foreach (var item in URLs)
+            {
+                var html = client.DownloadString(item);
+                var res = LoadDataFromHTML(html, "//td[@class='a1']/a/@href");
+                foreach (var item2 in res)
+                    ret.Add(new StringTuple() { url = "https://subscene.com" + item2[0], name = item2[0].Split('/')[3] });
+            }
+            return ret;
+        }
         public List<StringTuple> Search(string keyWord)
         {
             var client = new WebClient();
@@ -76,7 +143,7 @@ namespace MovieAssistant_Mini
             var res2 = LoadDataFromHTML(html, "//div[@class='title']/a", "//div[@class='title']/a/@href");
             var ret = new List<StringTuple>();
             foreach (var item in res2)
-                ret.Add(new StringTuple() { str1 = item[0], str2 = "https://subscene.com" + item[1] });
+                ret.Add(new StringTuple() { name = item[0], url = "https://subscene.com" + item[1] });
             return ret;
         }
         private static List<List<string>> LoadDataFromHTML(string HTML, params string[] xPathes)

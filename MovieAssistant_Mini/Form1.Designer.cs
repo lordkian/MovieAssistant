@@ -68,7 +68,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(263, 20);
             this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "lucifer";
             // 
             // checkedListBox1
             // 
